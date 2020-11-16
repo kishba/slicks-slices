@@ -34,7 +34,7 @@ async function turnPizzasIntoPages({ graphql, actions }) {
 }
 
 async function turnToppingsIntoPages({ graphql, actions }) {
-  console.log('turning the toppings into pages!!!!!');
+  // console.log('turning the toppings into pages!!!!!');
   // 1. get the template
   const toppingTemplate = path.resolve('./src/pages/pizzas.js');
   // 2. query all the toppings
@@ -51,7 +51,7 @@ async function turnToppingsIntoPages({ graphql, actions }) {
 
   // 3. createPage for that topping
   data.toppings.nodes.forEach((topping) => {
-    console.log(`creating page for ${topping.name}`);
+    // console.log(`creating page for ${topping.name}`);
     actions.createPage({
       path: `topping/${topping.name}`,
       component: toppingTemplate,
@@ -65,7 +65,7 @@ async function turnToppingsIntoPages({ graphql, actions }) {
 }
 
 async function turnSlicemastersIntoPages({ graphql, actions }) {
-  console.log('turning the masters into pages!');
+  // console.log('turning the masters into pages!');
   // 1. query all the slicemasters
   const { data } = await graphql(`
     query {
@@ -95,12 +95,12 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
   // 3. figure out how many pages there are based on how many slicemasters there are and how many per page!
   const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
   const pageCount = Math.ceil(data.slicemasters.totalCount / pageSize);
-  console.log(
-    `there will be ${data.slicemasters.totalCount} total people. And we have ${pageCount} pages with ${pageSize} per page!`
-  );
+  // console.log(
+  //   `there will be ${data.slicemasters.totalCount} total people. And we have ${pageCount} pages with ${pageSize} per page!`
+  // );
   // 4. loop from 1 to n and create the pages for the smaller lists
   Array.from({ length: pageCount }).forEach((_, index) => {
-    console.log(`creating page ${index}`);
+    // console.log(`creating page ${index}`);
     actions.createPage({
       path: `/slicemasters/${index + 1}`,
       component: path.resolve('./src/pages/slicemasters.js'),
@@ -132,7 +132,7 @@ async function fetchBeersAndTurnIntoNodes({
   // 1. fetch list of beers
   const res = await fetch('https://sampleapis.com/beers/api/ale');
   const beers = await res.json();
-  console.log(beers);
+  // console.log(beers);
   // 2. loop over each one
   for (const beer of beers) {
     // create node for each beer

@@ -11,7 +11,7 @@ const PizzaGrid = styled.div`
 `;
 export default function SinglePizzaPage({ data }) {
   const { pizza } = data;
-  console.log(pizza);
+  // console.log(pizza);
   return (
     <>
       <SEO title={pizza.name} image={pizza.image?.asset?.fluid?.src} />
